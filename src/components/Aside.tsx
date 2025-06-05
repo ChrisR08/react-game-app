@@ -1,11 +1,10 @@
-import {VStack} from '@chakra-ui/react';
-import React from 'react';
+import GenreList from './GenreList';
 
 const Aside = () => {
   return (
-    <VStack minWidth='150px' maxWidth='180px'>
-      <aside>Aside</aside>
-    </VStack>
+    <aside style={{minWidth: '150px', maxWidth: '180px'}}>
+      <GenreList />
+    </aside>
   );
 };
 
