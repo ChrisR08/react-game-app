@@ -10,6 +10,8 @@ function App() {
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
+      gap={{base: 2, sm: 3, md: 4, lg: 5}}
+      padding={{base: 2, sm: 3, md: 4, lg: 5}}
     >
       <GridItem area='nav'>
         <NavBar />

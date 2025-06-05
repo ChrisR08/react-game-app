@@ -3,7 +3,7 @@ import React from 'react';
 
 const Aside = () => {
   return (
-    <VStack>
+    <VStack minWidth={200}>
       <aside>Aside</aside>
     </VStack>
   );
