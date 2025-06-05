@@ -3,7 +3,7 @@ import {CanceledError} from 'axios';
 import apiClient from '../services/api-client';
 import FetchDataResponse from '../models/data';
 
-const useData = <T>(endpoint: string) => {
+const useData = <T>(endpoint: string, genre?: string) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +13,14 @@ const useData = <T>(endpoint: string) => {
     setIsLoading(true);
 
     apiClient
-      .get<FetchDataResponse<T>>(endpoint, {signal: controller.signal})
+      .get<FetchDataResponse<T>>(endpoint, {
+        signal: controller.signal,
+        params: genre
+          ? {
+              genres: genre.toLowerCase(),
+            }
+          : {},
+      })
       .then((res) => {
         setIsLoading(false);
         setData(res.data.results);
@@ -25,7 +32,7 @@ const useData = <T>(endpoint: string) => {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [genre]);
 
   return {data, error, isLoading};
 };

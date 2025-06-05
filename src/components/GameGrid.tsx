@@ -4,8 +4,12 @@ import GameCardSkeleton from './GameCardSkeleton';
 import GameCard from './GameCard';
 import useGames from '@/hooks/useGames';
 
-const GameGrid = () => {
-  const {data: games, error, isLoading} = useGames();
+interface Props {
+  genreSlug: string | null; // If null then the top 20 games are returned
+}
+
+const GameGrid = ({genreSlug}: Props) => {
+  const {data: games, error, isLoading} = useGames(genreSlug);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   if (error) {
@@ -16,7 +20,7 @@ const GameGrid = () => {
     <SimpleGrid
       minWidth='100%'
       columns={{sm: 1, md: 2, lg: 2, xl: 3}}
-      gap={{base: 4, md: 5, lg: 6}}
+      gap={{base: 5, md: 6, lg: 7}}
     >
       {isLoading &&
         skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}

@@ -1,9 +1,19 @@
-import {Grid, GridItem} from '@chakra-ui/react';
+import {useState} from 'react';
+import {Grid, GridItem, Heading} from '@chakra-ui/react';
+
 import NavBar from './components/NavBar';
-import Aside from './components/Aside';
-import Main from './components/Main';
+import GameGrid from './components/GameGrid';
+import GenreList from './components/GenreList';
+import FilterBar from './components/FilterBar';
+import {Genre} from './models/genre';
 
 function App() {
+  const [selectedgenre, setSelectedGenre] = useState<Genre | null>(null);
+
+  const onSelectGenre = (genre: Genre) => {
+    setSelectedGenre(genre);
+  };
+
   return (
     <Grid
       templateAreas={{
@@ -12,21 +22,29 @@ function App() {
       }}
       templateColumns={{
         base: '1fr',
-        lg: '180px 1fr',
+        lg: '215px 1fr',
       }}
-      gap={{base: 4, md: 5, lg: 6}}
-      padding={{base: 2, sm: 3, md: 4, lg: 5}}
+      gap={{base: 5, md: 6, lg: 7}}
+      padding={{base: 2, sm: 4, md: 8, lg: 10}}
     >
       <GridItem area='nav'>
         <NavBar />
       </GridItem>
 
       <GridItem area='aside' display={{base: 'none', lg: 'block'}}>
-        <Aside />
+        <aside className='wrapper'>
+          <GenreList onSelectGenre={onSelectGenre} />
+        </aside>
       </GridItem>
 
       <GridItem area='main'>
-        <Main />
+        <main className='wrapper'>
+          <Heading fontSize='5xl'>
+            {selectedgenre?.name ? selectedgenre.name : 'Games'}
+          </Heading>
+          <FilterBar />
+          <GameGrid genreSlug={selectedgenre?.slug} />
+        </main>
       </GridItem>
     </Grid>
   );
