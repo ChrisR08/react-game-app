@@ -33,7 +33,10 @@ function App() {
 
       <GridItem area='aside' display={{base: 'none', lg: 'block'}}>
         <aside className='wrapper'>
-          <GenreList onSelectGenre={onSelectGenre} />
+          <GenreList
+            selectedgenre={selectedgenre}
+            onSelectGenre={onSelectGenre}
+          />
         </aside>
       </GridItem>
 
