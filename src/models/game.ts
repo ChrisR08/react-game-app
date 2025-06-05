@@ -9,7 +9,7 @@ export interface Game {
   name: string;
   slug: string;
   released: string;
-  background_image: string | undefined;
+  background_image: string;
   rating: number;
   ratings_count: number;
   genres: {id: number; name: string}[];

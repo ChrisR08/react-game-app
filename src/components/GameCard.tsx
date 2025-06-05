@@ -2,7 +2,7 @@ import {Card, CardBody, Heading, HStack, Image} from '@chakra-ui/react';
 import {Game} from '@/models/game';
 import PlatformIconList from './PlatformIconList';
 import CriticScore from './CriticScore';
-
+import getCroppedImageUrl from '@/services/get-cropped-image';
 interface Props {
   game: Game;
 }
@@ -11,7 +11,7 @@ const GameCard = ({game}: Props) => {
   return (
     <Card overflow='hidden' borderRadius={8}>
       <Image
-        src={game.background_image}
+        src={getCroppedImageUrl(game.background_image)}
         alt={game.name}
         minHeight={{base: '210px', md: '230px', lg: '250px'}}
         objectFit='cover'
