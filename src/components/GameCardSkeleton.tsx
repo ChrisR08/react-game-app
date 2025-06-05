@@ -6,7 +6,6 @@ const GameCardSkeleton = () => {
     <GameCardContainer>
       <Card>
         <Skeleton
-          minWidth='100%'
           minHeight={{base: '210px', md: '230px', lg: '250px'}}
         ></Skeleton>
         <CardBody>

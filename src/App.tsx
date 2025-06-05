@@ -10,7 +10,11 @@ function App() {
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
-      gap={{base: 2, sm: 3, md: 4, lg: 5}}
+      templateColumns={{
+        base: '1fr',
+        lg: '180px 1fr',
+      }}
+      gap={{base: 4, md: 5, lg: 6}}
       padding={{base: 2, sm: 3, md: 4, lg: 5}}
     >
       <GridItem area='nav'>
