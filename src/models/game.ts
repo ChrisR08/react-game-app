@@ -1,15 +1,22 @@
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
+
 export interface Game {
   id: number;
-  slug: string;
   name: string;
+  slug: string;
   released: string;
-  tba: boolean;
-  background_image: string;
+  background_image: string | undefined;
   rating: number;
-  rating_top: number;
-  ratings: Record<string, unknown>; // adjust later if shape is known
   ratings_count: number;
-  reviews_text_count: string;
+  genres: {id: number; name: string}[];
+  parent_platforms: {platform: Platform}[];
+  metacritic: number;
+  playtime: number;
+  description_raw: string;
 }
 
 export interface GameResponse {
