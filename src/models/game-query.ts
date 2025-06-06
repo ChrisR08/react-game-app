@@ -4,8 +4,7 @@ export interface GameQuery {
   search: string | null;
   search_precise: boolean | null;
   search_exact: boolean | null;
-  parent_platforms: string | null;
-  platforms: string | null;
+  parent_platforms: number | null;
   stores: string | null;
   developers: string | null;
   publishers: string | null;

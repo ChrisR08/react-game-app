@@ -4,17 +4,20 @@ import GameCardSkeleton from './GameCardSkeleton';
 import GameCard from './GameCard';
 import useGames from '@/hooks/useGames';
 import {GameQuery} from '@/models/game-query';
+import {range} from '@/utils/range';
+import Platform from '@/models/platform';
 
 interface Props {
   genreSlug: string;
+  selectedPlatform: Platform | null;
 }
 
-const GameGrid = ({genreSlug}: Props) => {
+const GameGrid = ({genreSlug, selectedPlatform}: Props) => {
   const params: Partial<GameQuery> = {
     genres: genreSlug,
+    parent_platforms: selectedPlatform?.id,
   };
   const {data: games, error, isLoading} = useGames(params);
-  const skeletons = [1, 2, 3, 4, 5, 6];
 
   if (error) {
     return <p>{error}</p>;
@@ -28,7 +31,7 @@ const GameGrid = ({genreSlug}: Props) => {
       gap={{base: 5, md: 6, lg: 7}}
     >
       {isLoading &&
-        skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
+        range(9).map((skeleton) => <GameCardSkeleton key={skeleton} />)}
       {games.map((game) => (
         <GameCard key={game.id} game={game} />
       ))}

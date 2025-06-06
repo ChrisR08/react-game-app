@@ -4,12 +4,22 @@ import {FiChevronLeft} from 'react-icons/fi';
 import GameGrid from './GameGrid';
 import PlatformSelector from './PlatformSelector';
 import {Genre} from '@/models/genre';
+import {useState} from 'react';
+import Platform from '@/models/platform';
 
 interface Props {
   selectedGenre: Genre;
   resetGenre: () => void;
 }
 const Main = ({selectedGenre, resetGenre}: Props) => {
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
+
+  const handlePlatformClick = (platform: Platform) => {
+    setSelectedPlatform(platform);
+  };
+
   return (
     <main className='wrapper'>
       <Heading fontSize='5xl'>
@@ -22,9 +32,15 @@ const Main = ({selectedGenre, resetGenre}: Props) => {
             All Genres
           </Button>
         )}
-        <PlatformSelector />
+        <PlatformSelector
+          selectedPlatform={selectedPlatform}
+          handlePlatformClick={handlePlatformClick}
+        />
       </div>
-      <GameGrid genreSlug={selectedGenre.slug} />
+      <GameGrid
+        genreSlug={selectedGenre.slug}
+        selectedPlatform={selectedPlatform}
+      />
     </main>
   );
 };
