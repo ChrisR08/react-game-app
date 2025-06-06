@@ -1,10 +1,10 @@
+import {useState} from 'react';
 import {Button, Icon, Heading} from '@chakra-ui/react';
 import {FiChevronLeft} from 'react-icons/fi';
 
 import GameGrid from './GameGrid';
 import PlatformSelector from './PlatformSelector';
 import {Genre} from '@/models/genre';
-import {useState} from 'react';
 import Platform from '@/models/platform';
 
 interface Props {
