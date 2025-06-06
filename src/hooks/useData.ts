@@ -1,40 +1,27 @@
-import {useEffect, useState} from 'react';
-import {CanceledError} from 'axios';
+import useSWR from 'swr';
+import {AxiosError} from 'axios';
 import apiClient from '../services/api-client';
 import FetchDataResponse from '../models/data';
+import {cleanParams} from '../utils/clean-params';
+const fetcher = <T>(endpoint: string, params?: Record<string, any>) =>
+  apiClient
+    .get<FetchDataResponse<T>>(endpoint, {
+      params: cleanParams(params ?? {}),
+    })
+    .then((res) => res.data.results);
 
-const useData = <T>(endpoint: string, genre?: string) => {
-  const [data, setData] = useState<T[]>([]);
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+const useData = <T>(endpoint: string, params?: Record<string, any>) => {
+  const key = params ? [endpoint, cleanParams(params)] : endpoint;
 
-  useEffect(() => {
-    const controller = new AbortController();
-    setIsLoading(true);
+  const {data, error, isLoading} = useSWR<T[]>(key, () =>
+    fetcher<T>(endpoint, params)
+  );
 
-    apiClient
-      .get<FetchDataResponse<T>>(endpoint, {
-        signal: controller.signal,
-        params: genre
-          ? {
-              genres: genre.toLowerCase(),
-            }
-          : {},
-      })
-      .then((res) => {
-        setIsLoading(false);
-        setData(res.data.results);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setIsLoading(false);
-      });
-
-    return () => controller.abort();
-  }, [genre]);
-
-  return {data, error, isLoading};
+  return {
+    data: data ?? [],
+    error: error instanceof AxiosError ? error.message : '',
+    isLoading,
+  };
 };
 
 export default useData;

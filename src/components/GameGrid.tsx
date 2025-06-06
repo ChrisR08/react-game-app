@@ -3,13 +3,17 @@ import GameCardSkeleton from './GameCardSkeleton';
 
 import GameCard from './GameCard';
 import useGames from '@/hooks/useGames';
+import {GameQuery} from '@/models/game-query';
 
 interface Props {
-  genreSlug: string | null; // If null then the top 20 games are returned
+  genreSlug: string;
 }
 
 const GameGrid = ({genreSlug}: Props) => {
-  const {data: games, error, isLoading} = useGames(genreSlug);
+  const params: Partial<GameQuery> = {
+    genres: genreSlug,
+  };
+  const {data: games, error, isLoading} = useGames(params);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   if (error) {
@@ -19,6 +23,7 @@ const GameGrid = ({genreSlug}: Props) => {
   return (
     <SimpleGrid
       minWidth='100%'
+      alignItems={'stretch'}
       columns={{sm: 1, md: 2, lg: 2, xl: 3}}
       gap={{base: 5, md: 6, lg: 7}}
     >

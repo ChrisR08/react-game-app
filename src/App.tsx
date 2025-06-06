@@ -1,17 +1,27 @@
 import {useState} from 'react';
-import {Grid, GridItem, Heading} from '@chakra-ui/react';
+import {Grid, GridItem} from '@chakra-ui/react';
 
 import NavBar from './components/NavBar';
-import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
-import FilterBar from './components/FilterBar';
 import {Genre} from './models/genre';
+import Main from './components/Main';
 
 function App() {
-  const [selectedgenre, setSelectedGenre] = useState<Genre | null>(null);
+  const defaultGenre: Genre = {
+    id: 1,
+    name: '',
+    slug: '',
+    image_background: '',
+  };
+
+  const [selectedGenre, setSelectedGenre] = useState<Genre>(defaultGenre);
 
   const onSelectGenre = (genre: Genre) => {
     setSelectedGenre(genre);
+  };
+
+  const resetGenre = () => {
+    setSelectedGenre(defaultGenre);
   };
 
   return (
@@ -34,20 +44,14 @@ function App() {
       <GridItem area='aside' display={{base: 'none', lg: 'block'}}>
         <aside className='wrapper'>
           <GenreList
-            selectedgenre={selectedgenre}
+            selectedGenre={selectedGenre}
             onSelectGenre={onSelectGenre}
           />
         </aside>
       </GridItem>
 
       <GridItem area='main'>
-        <main className='wrapper'>
-          <Heading fontSize='5xl'>
-            {selectedgenre?.name ? selectedgenre.name : 'Games'}
-          </Heading>
-          <FilterBar />
-          <GameGrid genreSlug={selectedgenre?.slug} />
-        </main>
+        <Main selectedGenre={selectedGenre} resetGenre={resetGenre} />
       </GridItem>
     </Grid>
   );

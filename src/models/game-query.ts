@@ -1,0 +1,25 @@
+export interface GameQuery {
+  page: number | null;
+  page_size: number | null;
+  search: string | null;
+  search_precise: boolean | null;
+  search_exact: boolean | null;
+  parent_platforms: string | null;
+  platforms: string | null;
+  stores: string | null;
+  developers: string | null;
+  publishers: string | null;
+  genres: string | null;
+  tags: string | null;
+  creators: string | null;
+  dates: string | null;
+  updated: string | null;
+  platforms_count: number | null;
+  metacritic: string | null;
+  exclude_collection: number | null;
+  exclude_additions: boolean | null;
+  exclude_parents: boolean | null;
+  exclude_game_series: boolean | null;
+  exclude_stores: string | null;
+  ordering: string | null;
+}
