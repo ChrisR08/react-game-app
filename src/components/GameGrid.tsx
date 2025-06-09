@@ -1,4 +1,4 @@
-import {SimpleGrid} from '@chakra-ui/react';
+import {SimpleGrid, Text} from '@chakra-ui/react';
 import GameCardSkeleton from './GameCardSkeleton';
 
 import GameCard from './GameCard';
@@ -11,14 +11,14 @@ const GameGrid = () => {
   const {data: games, error, isLoading} = useGames(gameQuery);
 
   if (error) {
-    return <p>{error}</p>;
+    return <Text>{error}</Text>;
   }
 
   return (
     <SimpleGrid
       minWidth='100%'
       alignItems={'stretch'}
-      columns={{sm: 1, md: 2, lg: 2, xl: 3}}
+      columns={{base: 1, sm: 2, lg: 3, '2xl': 4}}
       gap={{base: 5, md: 6, lg: 7}}
     >
       {isLoading &&

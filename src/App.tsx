@@ -16,7 +16,7 @@ function App() {
         lg: '215px 1fr',
       }}
       gap={{base: 5, md: 6, lg: 7}}
-      padding={{base: 2, sm: 4, md: 8, lg: 10}}
+      padding={{base: 3, sm: 4, md: 8, lg: 10}}
     >
       <GridItem area='header'>
         <Header />

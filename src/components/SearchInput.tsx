@@ -22,7 +22,7 @@ const SearchInput = () => {
       <InputLeftElement children={<BsSearch />} />
       <Input
         borderRadius={20}
-        placeholder='Search all games'
+        placeholder='Search games'
         variant='filled'
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
