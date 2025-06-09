@@ -11,7 +11,7 @@ interface Props {
 const GameCard = ({game}: Props) => {
   const imageSrc = game.background_image
     ? getCroppedImageUrl(game.background_image)
-    : '/src/assets/no-image-placeholder-6f3882e0.webp';
+    : '/no-image-placeholder-6f3882e0.webp';
 
   return (
     <GameCardContainer>
