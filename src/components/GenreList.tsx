@@ -1,41 +1,45 @@
-import useGenres from '../hooks/useGenres';
-import {Genre} from '../models/genre';
-import getCroppedImageUrl from '../utils/get-cropped-image';
 import {Button, Image, List, ListItem, Spinner, Text} from '@chakra-ui/react';
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre;
-}
+import useGenres from '../hooks/useGenres';
+import getCroppedImageUrl from '../helper/get-cropped-image';
+import useGameQuery from '@/hooks/useGameQuery';
+import {Genre} from '@/models/genre';
 
-const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
+const GenreList = () => {
   const {data: genres, isLoading, error} = useGenres();
+  const {
+    gameQuery: {genre: selectedGenre},
+    setGameQuery,
+  } = useGameQuery();
 
   if (isLoading) return <Spinner />;
 
   if (error) return <Text>{error}</Text>;
 
+  const handleSelectGenre = (genre: Genre) => {
+    setGameQuery((prev) => ({...prev, genre}));
+  };
+
   return (
     <List className='wrapper'>
       {genres.map((genre) => (
-        <ListItem
-          display='flex'
-          alignItems='center'
-          justifyContent='start'
-          gap={1.5}
-          key={genre.id}
-        >
-          <Image
-            boxSize='32px'
-            borderRadius={8}
-            objectFit='cover'
-            src={getCroppedImageUrl(genre.image_background)}
-          />
+        <ListItem key={genre.id}>
           <Button
-            fontWeight={genre.id === selectedGenre.id ? 'bold' : 'normal'}
+            display='flex'
+            alignItems='center'
+            justifyContent='start'
+            paddingInlineStart='0'
+            fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
+            gap={2.5}
             variant='ghost'
-            onClick={() => onSelectGenre(genre)}
+            onClick={() => handleSelectGenre(genre)}
           >
+            <Image
+              boxSize='32px'
+              borderRadius={8}
+              objectFit='cover'
+              src={getCroppedImageUrl(genre.image_background)}
+            />
             {genre.name}
           </Button>
         </ListItem>

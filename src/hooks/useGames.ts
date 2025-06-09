@@ -1,10 +1,13 @@
-import {GameQuery} from '@/models/game-query';
 import {Game} from '../models/game';
 import useData from './useData';
-import {cleanParams} from '../utils/clean-params';
+import {cleanParams} from '../helper/clean-params';
+import {GameContext} from '@/models/game-context';
+import toGameQuery from '@/helper/toGameQuery';
 
-const useGames = (query?: Partial<GameQuery>) => {
-  const cleaned = query ? cleanParams(query) : undefined;
+const useGames = (query?: Partial<GameContext>) => {
+  const gameQuery = query ? toGameQuery(query) : undefined;
+  const cleaned = gameQuery ? cleanParams(gameQuery) : undefined;
+
   return useData<Game>('/games', cleaned);
 };
 

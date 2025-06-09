@@ -1,46 +1,17 @@
-import {useState} from 'react';
-import {Button, Icon, Heading} from '@chakra-ui/react';
-import {FiChevronLeft} from 'react-icons/fi';
-
+import {Heading} from '@chakra-ui/react';
 import GameGrid from './GameGrid';
-import PlatformSelector from './PlatformSelector';
-import {Genre} from '@/models/genre';
-import Platform from '@/models/platform';
+import useGameQuery from '@/hooks/useGameQuery';
+import FiltersBar from './FiltersBar';
 
-interface Props {
-  selectedGenre: Genre;
-  resetGenre: () => void;
-}
-const Main = ({selectedGenre, resetGenre}: Props) => {
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-    null
-  );
-
-  const handlePlatformClick = (platform: Platform) => {
-    setSelectedPlatform(platform);
-  };
+const Main = () => {
+  const {gameQuery} = useGameQuery();
+  const {genre} = gameQuery;
 
   return (
     <main className='wrapper'>
-      <Heading fontSize='5xl'>
-        {selectedGenre.name ? selectedGenre.name : 'Games'}
-      </Heading>
-      <div className='wrapper wrapper-x'>
-        {selectedGenre.name && (
-          <Button variant='solid' gap={0.5} onClick={resetGenre}>
-            <Icon as={FiChevronLeft} />
-            All Genres
-          </Button>
-        )}
-        <PlatformSelector
-          selectedPlatform={selectedPlatform}
-          handlePlatformClick={handlePlatformClick}
-        />
-      </div>
-      <GameGrid
-        genreSlug={selectedGenre.slug}
-        selectedPlatform={selectedPlatform}
-      />
+      <Heading fontSize='5xl'>{genre?.name ? genre.name : 'Games'}</Heading>
+      <FiltersBar />
+      <GameGrid />
     </main>
   );
 };

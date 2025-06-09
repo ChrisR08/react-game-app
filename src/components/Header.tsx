@@ -1,20 +1,20 @@
-import {Box, calc, HStack, Image} from '@chakra-ui/react';
+import {Box, HStack, Image} from '@chakra-ui/react';
 import logo from '../assets/logo.webp';
 import ColorModeSwitch from './ColorModeSwitch';
 import SearchInput from './SearchInput';
-const NavBar = () => {
+
+const Header = () => {
   return (
-    <nav>
+    <header>
       <HStack justifyContent='space-between' gap={{base: 5, md: 6, lg: 7}}>
-        <Box minWidth='215px'>
+        <Box minWidth={{lg: '215px'}}>
           <Image src={logo} alt={'Logo'} maxWidth={'4rem'} aspectRatio={1} />
         </Box>
-
         <SearchInput />
         <ColorModeSwitch />
       </HStack>
-    </nav>
+    </header>
   );
 };
 
-export default NavBar;
+export default Header;

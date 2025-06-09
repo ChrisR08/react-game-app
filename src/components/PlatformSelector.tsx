@@ -8,36 +8,49 @@ import {
   MenuList,
 } from '@chakra-ui/react';
 import {BsChevronDown} from 'react-icons/bs';
-import iconMap from '@/utils/PlatformIconList';
+import iconMap from '@/helper/iconMap';
+import useGameQuery from '@/hooks/useGameQuery';
 import Platform from '@/models/platform';
 
-interface Props {
-  selectedPlatform: Platform | null;
-  handlePlatformClick: (selectedPlatform: Platform) => void;
-}
-
-const PlatformSelector = ({selectedPlatform, handlePlatformClick}: Props) => {
+const PlatformSelector = () => {
+  const {
+    gameQuery: {platform},
+    setGameQuery,
+  } = useGameQuery();
   const {data: platforms, error} = usePlatforms();
+
+  const handleSelectPlatform = (platform: Platform) => {
+    setGameQuery((prev) => ({...prev, platform}));
+  };
+
+  const handleResetPlatform = () => {
+    setGameQuery((prev) => {
+      const {platform, ...rest} = prev;
+      return rest;
+    });
+  };
+
   if (error) return null;
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        {selectedPlatform ? (
+        {platform ? (
           <div className='wrapper wrapper-x wrapper-x-s'>
-            <Icon as={iconMap[selectedPlatform.slug]} color='gray.400' />{' '}
-            {selectedPlatform?.name}
+            <Icon as={iconMap[platform.slug]} color='gray.400' />{' '}
+            {platform?.name}
           </div>
         ) : (
           'Platforms'
         )}
       </MenuButton>
       <MenuList>
+        <MenuItem onClick={handleResetPlatform}>All Platforms</MenuItem>
         {platforms.map((platform) => (
           <MenuItem
             key={platform.id}
             gap={1.5}
-            onClick={() => handlePlatformClick(platform)}
+            onClick={() => handleSelectPlatform(platform)}
           >
             <Icon as={iconMap[platform.slug]} color='gray.400' />
             {platform.name}

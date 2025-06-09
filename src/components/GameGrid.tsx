@@ -3,21 +3,12 @@ import GameCardSkeleton from './GameCardSkeleton';
 
 import GameCard from './GameCard';
 import useGames from '@/hooks/useGames';
-import {GameQuery} from '@/models/game-query';
-import {range} from '@/utils/range';
-import Platform from '@/models/platform';
+import {range} from '@/helper/range';
+import useGameQuery from '@/hooks/useGameQuery';
 
-interface Props {
-  genreSlug: string;
-  selectedPlatform: Platform | null;
-}
-
-const GameGrid = ({genreSlug, selectedPlatform}: Props) => {
-  const params: Partial<GameQuery> = {
-    genres: genreSlug,
-    parent_platforms: selectedPlatform?.id,
-  };
-  const {data: games, error, isLoading} = useGames(params);
+const GameGrid = () => {
+  const {gameQuery} = useGameQuery();
+  const {data: games, error, isLoading} = useGames(gameQuery);
 
   if (error) {
     return <p>{error}</p>;

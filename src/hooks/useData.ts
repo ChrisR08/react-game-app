@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import {AxiosError} from 'axios';
 import apiClient from '../services/api-client';
 import FetchDataResponse from '../models/data';
-import {cleanParams} from '../utils/clean-params';
+import {cleanParams} from '../helper/clean-params';
 const fetcher = <T>(endpoint: string, params?: Record<string, any>) =>
   apiClient
     .get<FetchDataResponse<T>>(endpoint, {

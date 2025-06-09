@@ -18,7 +18,11 @@ const ColorModeSwitch = () => {
         onChange={toggleColorMode}
         colorScheme='green'
       />
-      <FormLabel htmlFor='toggle-theme' mb={0}>
+      <FormLabel
+        htmlFor='toggle-theme'
+        mb={0}
+        display={{base: 'none', md: 'block'}}
+      >
         {colorMode === 'dark' ? 'Dark' : 'Light'} Mode
       </FormLabel>
     </FormControl>
