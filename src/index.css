@@ -90,7 +90,7 @@ ul {
   list-style: none;
 }
 
-button.chakra-button {
+.filters .chakra-button {
   height: 2.35rem;
   padding-inline: 0.75rem;
 }
