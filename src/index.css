@@ -75,8 +75,24 @@ h6 {
   isolation: isolate;
 }
 
+/* App styles */
+#root {
+  /* Control large screens */
+  max-width: 1920px;
+  margin-inline: auto;
+}
+
+h1.chakra-heading {
+  line-height: 1;
+}
+
 ul {
   list-style: none;
+}
+
+button.chakra-button {
+  height: 2.35rem;
+  padding-inline: 0.75rem;
 }
 
 .wrapper {
@@ -88,6 +104,7 @@ ul {
 
 .wrapper-x {
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem;
 }
@@ -98,4 +115,15 @@ ul {
 
 div.filters > * {
   font-size: 0.9rem;
+}
+
+header .chakra-form__label {
+  margin: 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  .hide-sm {
+    display: none;
+  }
 }

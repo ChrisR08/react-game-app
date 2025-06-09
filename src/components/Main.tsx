@@ -12,7 +12,7 @@ const Main = () => {
 
   return (
     <main className='wrapper'>
-      <Heading as='h1' fontSize='4xl'>
+      <Heading as='h1' fontSize='5xl'>
         {heading}
       </Heading>
       <FiltersBar />

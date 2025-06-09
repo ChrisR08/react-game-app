@@ -27,7 +27,7 @@ const ColorModeSwitch = () => {
       <FormLabel
         htmlFor='toggle-theme'
         mb={0}
-        display={{base: 'none', md: 'flex'}}
+        display='flex'
         alignItems='center'
       >
         {colorMode === 'dark' ? (

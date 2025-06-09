@@ -7,7 +7,7 @@ const ResetFilters = () => {
 
   return (
     <Button gap={1.5} onClick={() => setGameQuery({})}>
-      Reset
+      <span className='hide-sm'>Reset</span>
       <Icon as={RxReset} />
     </Button>
   );
