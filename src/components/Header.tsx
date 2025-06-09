@@ -1,5 +1,5 @@
-import {Box, HStack, Image} from '@chakra-ui/react';
-import logo from '../assets/logo.webp';
+import {Box, HStack, Icon} from '@chakra-ui/react';
+import {SlGameController} from 'react-icons/sl';
 import ColorModeSwitch from './ColorModeSwitch';
 import SearchInput from './SearchInput';
 
@@ -8,7 +8,12 @@ const Header = () => {
     <header>
       <HStack justifyContent='space-between' gap={{base: 5, md: 6, lg: 7}}>
         <Box minWidth={{lg: '215px'}}>
-          <Image src={logo} alt={'Logo'} maxWidth={'4rem'} aspectRatio={1} />
+          <Icon
+            as={SlGameController}
+            width='3rem'
+            height='3rem'
+            aspectRatio={1}
+          />
         </Box>
         <SearchInput />
         <ColorModeSwitch />
