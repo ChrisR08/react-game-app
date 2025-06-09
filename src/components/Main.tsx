@@ -5,11 +5,16 @@ import FiltersBar from './FiltersBar';
 
 const Main = () => {
   const {gameQuery} = useGameQuery();
-  const {genre} = gameQuery;
+
+  const heading = `${gameQuery.platform?.name || ''} ${
+    gameQuery.genre?.name || ''
+  } Games`;
 
   return (
     <main className='wrapper'>
-      <Heading fontSize='5xl'>{genre?.name ? genre.name : 'Games'}</Heading>
+      <Heading as='h1' fontSize='4xl'>
+        {heading}
+      </Heading>
       <FiltersBar />
       <GameGrid />
     </main>

@@ -29,6 +29,8 @@ const GenreList = () => {
             alignItems='center'
             justifyContent='start'
             paddingInlineStart='0'
+            whiteSpace='normal'
+            textAlign='left'
             fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
             gap={2.5}
             variant='ghost'

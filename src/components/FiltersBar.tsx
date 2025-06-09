@@ -7,7 +7,7 @@ import SortSelector from './SortSelector';
 
 const FiltersBar = () => {
   const {gameQuery, setGameQuery} = useGameQuery();
-  const {genre} = gameQuery;
+  const {genre, ordering} = gameQuery;
 
   const handleResetGenre = () => {
     setGameQuery((prev) => {
@@ -16,8 +16,14 @@ const FiltersBar = () => {
     });
   };
 
+  const onSelectSortOrder = (value: string) => {
+    setGameQuery((prev) => {
+      return {...prev, ordering: value};
+    });
+  };
+
   return (
-    <div id='filters' className='wrapper wrapper-x'>
+    <div className='filters wrapper wrapper-x'>
       {genre?.name && (
         <Button variant='solid' gap={0.5} onClick={handleResetGenre}>
           <Icon as={FiChevronLeft} />
@@ -25,8 +31,8 @@ const FiltersBar = () => {
         </Button>
       )}
       <PlatformSelector />
-      <SortSelector />
-      {Object.keys(gameQuery).length > 1 && <ResetFilters />}
+      <SortSelector ordering={ordering} onSelectSortOrder={onSelectSortOrder} />
+      {gameQuery && Object.keys(gameQuery).length > 1 && <ResetFilters />}
     </div>
   );
 };

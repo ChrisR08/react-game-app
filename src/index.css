@@ -3,6 +3,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  letter-spacing: 0.75px;
 }
 
 /* 2. Remove default margin */
@@ -93,4 +94,8 @@ ul {
 
 .wrapper-x-s {
   gap: 0.35rem;
+}
+
+div.filters > * {
+  font-size: 0.9rem;
 }
