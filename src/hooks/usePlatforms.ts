@@ -1,6 +1,4 @@
-import Platform from '@/models/platform';
-import useData from './useData';
-
-const usePlatforms = () => useData<Platform>('/platforms/lists/parents');
+import platforms from '@/data/platforms';
+const usePlatforms = () => ({data: platforms, isLoading: false, error: false});
 
 export default usePlatforms;
