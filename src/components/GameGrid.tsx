@@ -14,6 +14,8 @@ const GameGrid = () => {
     return <Text>{error}</Text>;
   }
 
+  console.log(games);
+
   return (
     <SimpleGrid
       minWidth='100%'
@@ -23,9 +25,8 @@ const GameGrid = () => {
     >
       {isLoading &&
         range(9).map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-      {games.map((game) => (
-        <GameCard key={game.id} game={game} />
-      ))}
+      {games.length &&
+        games.map((game) => <GameCard key={game.id} game={game} />)}
     </SimpleGrid>
   );
 };

@@ -18,18 +18,20 @@ const GameCard = ({game}: Props) => {
       <Card height='100%'>
         <Image
           src={imageSrc}
-          alt={game.name}
+          alt={game?.name}
           minHeight={{base: '210px', md: '230px', lg: '250px'}}
           objectFit='cover'
         />
         <CardBody display='grid' gap={4}>
           <HStack justifyContent='space-between'>
-            <PlatformIconList
-              platforms={game.parent_platforms.map((p) => p.platform)}
-            />
-            <CriticScore score={game.metacritic} />
+            {game.parent_platforms && (
+              <PlatformIconList
+                platforms={game.parent_platforms.map((p) => p.platform)}
+              />
+            )}
+            {game.metacritic && <CriticScore score={game.metacritic} />}
           </HStack>
-          <Heading fontSize='xl'>{game.name}</Heading>
+          <Heading fontSize='xl'>{game?.name}</Heading>
         </CardBody>
       </Card>
     </GameCardContainer>
