@@ -18,7 +18,7 @@ const GameCard = ({game}: Props) => {
       <Card height='100%'>
         <Image
           src={imageSrc}
-          alt={game?.name}
+          alt={game.name}
           minHeight={{base: '210px', md: '230px', lg: '250px'}}
           objectFit='cover'
         />
@@ -31,7 +31,7 @@ const GameCard = ({game}: Props) => {
             )}
             {game.metacritic && <CriticScore score={game.metacritic} />}
           </HStack>
-          <Heading fontSize='xl'>{game?.name}</Heading>
+          <Heading fontSize='xl'>{game.name}</Heading>
         </CardBody>
       </Card>
     </GameCardContainer>
