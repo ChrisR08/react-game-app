@@ -23,9 +23,11 @@ const GameGrid = () => {
     >
       {isLoading &&
         range(9).map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-      {games.map((game) => (
-        <GameCard key={game.id} game={game} />
-      ))}
+      {!isLoading && games.length === 0 && (
+        <Text>No games were found matching your search/filters.</Text>
+      )}
+      {games.length > 0 &&
+        games.map((game) => <GameCard key={game.id} game={game} />)}
     </SimpleGrid>
   );
 };

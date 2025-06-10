@@ -24,10 +24,14 @@ const GameCard = ({game}: Props) => {
         />
         <CardBody display='grid' gap={4}>
           <HStack justifyContent='space-between'>
-            <PlatformIconList
-              platforms={game.parent_platforms.map((p) => p.platform)}
-            />
-            <CriticScore score={game.metacritic} />
+            {Array.isArray(game.parent_platforms) && (
+              <PlatformIconList
+                platforms={game.parent_platforms.map((p) => p.platform)}
+              />
+            )}
+            {typeof game.metacritic === 'number' && (
+              <CriticScore score={game.metacritic} />
+            )}
           </HStack>
           <Heading fontSize='xl'>{game.name}</Heading>
         </CardBody>
