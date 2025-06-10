@@ -9,7 +9,7 @@ export interface Game {
   rating: number;
   ratings_count: number;
   genres: {id: number; name: string}[];
-  parent_platforms: {platform: Platform}[];
+  parent_platforms: {platform: Platform}[] | null;
   metacritic: number;
   playtime: number;
   description_raw: string;
