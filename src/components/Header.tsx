@@ -2,12 +2,13 @@ import {Box, HStack, Icon} from '@chakra-ui/react';
 import {SlGameController} from 'react-icons/sl';
 import ColorModeSwitch from './ColorModeSwitch';
 import SearchInput from './SearchInput';
+import {COL_1_WIDTH} from '@/constants/styles';
 
 const Header = () => {
   return (
     <header>
       <HStack justifyContent='space-between' gap={{base: 5, md: 6, lg: 7}}>
-        <Box minWidth={{lg: '215px'}}>
+        <Box minWidth={{lg: COL_1_WIDTH}}>
           <Icon
             as={SlGameController}
             width='3rem'

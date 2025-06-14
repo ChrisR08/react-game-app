@@ -15,7 +15,7 @@ import useGameQuery from '@/hooks/useGameQuery';
 import {Genre} from '@/models/genre';
 
 const GenreList = () => {
-  const {data: genres, isLoading, error} = useGenres();
+  const {data, isLoading, error} = useGenres();
   const {
     gameQuery: {genre: selectedGenre},
     setGameQuery,
@@ -23,7 +23,7 @@ const GenreList = () => {
 
   if (isLoading) return <Spinner />;
 
-  if (error) return <Text>{error}</Text>;
+  if (error) return <Text>{error.message}</Text>;
 
   const handleSelectGenre = (genre: Genre) => {
     setGameQuery((prev) => ({...prev, genre}));
@@ -33,7 +33,7 @@ const GenreList = () => {
     <Box display='flex' flexDirection='column' gap={4}>
       <Heading fontSize='2xl'>Genres</Heading>
       <List className='wrapper' gap={3}>
-        {genres.map((genre) => (
+        {data?.results.map((genre) => (
           <ListItem key={genre.id}>
             <Button
               display='flex'

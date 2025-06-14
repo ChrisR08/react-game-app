@@ -6,6 +6,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  Spinner,
 } from '@chakra-ui/react';
 import {BsChevronDown} from 'react-icons/bs';
 import iconMap from '@/helper/iconMap';
@@ -17,7 +18,7 @@ const PlatformSelector = () => {
     gameQuery: {platform},
     setGameQuery,
   } = useGameQuery();
-  const {data: platforms, error} = usePlatforms();
+  const {data, error} = usePlatforms();
 
   const handleSelectPlatform = (platform: Platform) => {
     setGameQuery((prev) => ({...prev, platform}));
@@ -46,7 +47,7 @@ const PlatformSelector = () => {
       </MenuButton>
       <MenuList>
         <MenuItem onClick={handleResetPlatform}>All Platforms</MenuItem>
-        {platforms.map((platform) => (
+        {data?.results.map((platform) => (
           <MenuItem
             key={platform.id}
             gap={1.5}
