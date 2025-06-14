@@ -6,9 +6,9 @@ import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 
 import {GameQueryProvider} from './context/game-query-context';
 import App from './App';
-import theme from './theme';
+import theme from './styles/theme';
 
-import './index.css';
+import './styles/index.css';
 
 const queryClient = new QueryClient();
 

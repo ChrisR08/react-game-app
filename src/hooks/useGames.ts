@@ -1,10 +1,9 @@
 import {Game} from '../models/game';
-import {cleanParams} from '../helper/clean-params';
+import {cleanParams} from '../helpers/clean-params';
 import {GameContext} from '@/models/game-context';
-import toGameQuery from '@/helper/toGameQuery';
+import toGameQuery from '@/helpers/toGameQuery';
 import {useQuery} from '@tanstack/react-query';
-import apiClient from '@/services/api-client';
-import {FetchDataResponse} from './useData';
+import apiClient, {FetchDataResponse} from '@/services/api-client';
 
 const useGames = (query?: Partial<GameContext>) => {
   const gameQuery = query ? toGameQuery(query) : undefined;

@@ -3,9 +3,9 @@ import GameCardSkeleton from './GameCardSkeleton';
 
 import GameCard from './GameCard';
 import useGames from '@/hooks/useGames';
-import {range} from '@/helper/range';
+import {range} from '@/helpers/range';
 import useGameQuery from '@/hooks/useGameQuery';
-import {GAP} from '@/constants/styles';
+import {GAP} from '@/styles/constants';
 
 const GameGrid = () => {
   const {gameQuery} = useGameQuery();

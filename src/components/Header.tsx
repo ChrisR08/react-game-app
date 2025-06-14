@@ -2,7 +2,7 @@ import {Box, HStack, Icon} from '@chakra-ui/react';
 import {SlGameController} from 'react-icons/sl';
 import ColorModeSwitch from './ColorModeSwitch';
 import SearchInput from './SearchInput';
-import {COL_1_WIDTH} from '@/constants/styles';
+import {COL_1_WIDTH} from '@/styles/constants';
 
 const Header = () => {
   return (

@@ -1,8 +1,7 @@
 import platforms from '@/data/platforms';
 import Platform from '@/models/platform';
-import apiClient from '@/services/api-client';
+import apiClient, {FetchDataResponse} from '@/services/api-client';
 import {useQuery} from '@tanstack/react-query';
-import {FetchDataResponse} from './useData';
 
 const usePlatforms = () =>
   useQuery<FetchDataResponse<Platform>, Error>({

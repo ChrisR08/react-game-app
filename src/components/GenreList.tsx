@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 import useGenres from '../hooks/useGenres';
-import getCroppedImageUrl from '../helper/get-cropped-image';
+import getCroppedImageUrl from '../helpers/get-cropped-image';
 import useGameQuery from '@/hooks/useGameQuery';
 import {Genre} from '@/models/genre';
 

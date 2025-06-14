@@ -6,10 +6,9 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  Spinner,
 } from '@chakra-ui/react';
 import {BsChevronDown} from 'react-icons/bs';
-import iconMap from '@/helper/iconMap';
+import iconMap from '@/helpers/iconMap';
 import useGameQuery from '@/hooks/useGameQuery';
 import Platform from '@/models/platform';
 

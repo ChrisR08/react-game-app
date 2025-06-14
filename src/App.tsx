@@ -3,7 +3,7 @@ import {Grid, GridItem} from '@chakra-ui/react';
 import GenreList from './components/GenreList';
 import Main from './components/Main';
 import Header from './components/Header';
-import {COL_1_WIDTH, GAP} from './constants/styles';
+import {COL_1_WIDTH, GAP} from './styles/constants';
 
 function App() {
   return (
