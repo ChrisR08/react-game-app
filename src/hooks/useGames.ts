@@ -1,9 +1,12 @@
+import {useQuery} from '@tanstack/react-query';
+
 import {Game} from '../models/game';
 import {cleanParams} from '../helpers/clean-params';
 import {GameContext} from '@/models/game-context';
 import toGameQuery from '@/helpers/toGameQuery';
-import {useQuery} from '@tanstack/react-query';
-import apiClient, {FetchDataResponse} from '@/services/api-client';
+import APIClient, {FetchDataResponse} from '@/services/api-client';
+
+const apiCLient = new APIClient<Game>('/games');
 
 const useGames = (query?: Partial<GameContext>) => {
   const gameQuery = query ? toGameQuery(query) : undefined;
@@ -11,12 +14,7 @@ const useGames = (query?: Partial<GameContext>) => {
 
   return useQuery<FetchDataResponse<Game>, Error>({
     queryKey: ['games', cleaned],
-    queryFn: () =>
-      apiClient
-        .get<FetchDataResponse<Game>>('/games', {
-          params: cleaned,
-        })
-        .then((res) => res.data),
+    queryFn: () => apiCLient.getAll({params: cleaned}),
     staleTime: 24 * 60 * 60 * 1000, // 24hrs
   });
 };

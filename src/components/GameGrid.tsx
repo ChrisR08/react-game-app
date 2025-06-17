@@ -25,7 +25,7 @@ const GameGrid = () => {
       {isLoading &&
         range(9).map((skeleton) => <GameCardSkeleton key={skeleton} />)}
       {!isLoading && data?.results.length === 0 && (
-        <Text>No games were found matching your search/filters.</Text>
+        <Text>Sorry, no games were found matching your search/filters.</Text>
       )}
       {data?.results.map((game) => (
         <GameCard key={game.id} game={game} />
