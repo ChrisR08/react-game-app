@@ -3,31 +3,33 @@ import GameCardSkeleton from './GameCardSkeleton';
 
 import GameCard from './GameCard';
 import useGames from '@/hooks/useGames';
-import {range} from '@/helper/range';
+import {range} from '@/helpers/range';
 import useGameQuery from '@/hooks/useGameQuery';
+import {GAP} from '@/styles/constants';
 
 const GameGrid = () => {
   const {gameQuery} = useGameQuery();
-  const {data: games, error, isLoading} = useGames(gameQuery);
+  const {data, error, isLoading} = useGames(gameQuery);
 
   if (error) {
-    return <Text>{error}</Text>;
+    return <Text>{error.message}</Text>;
   }
 
   return (
     <SimpleGrid
       minWidth='100%'
       alignItems={'stretch'}
-      columns={{base: 1, sm: 2, lg: 3, '2xl': 4}}
-      gap={{base: 5, md: 6, lg: 7}}
+      columns={{base: 1, sm: 2, lg: 3}}
+      gap={GAP}
     >
       {isLoading &&
         range(9).map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-      {!isLoading && games.length === 0 && (
-        <Text>No games were found matching your search/filters.</Text>
+      {!isLoading && data?.results.length === 0 && (
+        <Text>Sorry, no games were found matching your search/filters.</Text>
       )}
-      {games.length > 0 &&
-        games.map((game) => <GameCard key={game.id} game={game} />)}
+      {data?.results.map((game) => (
+        <GameCard key={game.id} game={game} />
+      ))}
     </SimpleGrid>
   );
 };

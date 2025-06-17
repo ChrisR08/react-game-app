@@ -78,7 +78,7 @@ h6 {
 /* App styles */
 #root {
   /* Control large screens */
-  max-width: 1920px;
+  max-width: 1600px;
   margin-inline: auto;
 }
 
