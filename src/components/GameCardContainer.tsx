@@ -1,3 +1,4 @@
+import {primaryColor} from '@/styles/constants';
 import {Box} from '@chakra-ui/react';
 import {ReactNode} from 'react';
 
@@ -12,7 +13,8 @@ const GameCardContainer = ({children}: Props) => {
       height='100%'
       overflow='hidden'
       borderRadius={8}
-      border='1px solid #1A202C'
+      border='1px solid'
+      borderColor={primaryColor}
     >
       {children}
     </Box>

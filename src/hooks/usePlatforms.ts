@@ -4,7 +4,6 @@ import APIClient, {FetchDataResponse} from '@/services/api-client';
 import {useQuery} from '@tanstack/react-query';
 
 const apiClient = new APIClient<Platform>('/platforms/lists/parents');
-
 const usePlatforms = () =>
   useQuery<FetchDataResponse<Platform>, Error>({
     queryKey: ['platforms'],

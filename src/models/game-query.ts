@@ -6,6 +6,7 @@ interface GameQueryBase {
   parent_platforms: number;
   metacritic: string;
   ordering: string;
+  page: number;
 }
 
 export type GameQuery = Partial<GameQueryBase>;
