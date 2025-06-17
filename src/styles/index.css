@@ -15,6 +15,7 @@
 @media (prefers-reduced-motion: no-preference) {
   html {
     interpolate-size: allow-keywords;
+    scroll-behavior: smooth;
   }
 }
 
@@ -80,6 +81,9 @@ h6 {
   /* Control large screens */
   max-width: 1600px;
   margin-inline: auto;
+
+  --primaryColor: #1a202c;
+  --primaryHover: rgba(255, 255, 255, 0.16);
 }
 
 h1.chakra-heading {
@@ -119,6 +123,14 @@ div.filters > * {
 
 header .chakra-form__label {
   margin: 0;
+}
+
+html[data-theme='dark'] .btt-btn {
+  background-color: var(--primaryColor) !important;
+}
+
+html[data-theme='dark'] .btt-btn:hover {
+  background-color: rgba(255, 255, 255, 0.16) !important;
 }
 
 /* Responsive */

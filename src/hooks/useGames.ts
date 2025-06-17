@@ -1,4 +1,4 @@
-import {useQuery} from '@tanstack/react-query';
+import {useInfiniteQuery} from '@tanstack/react-query';
 
 import {Game} from '../models/game';
 import {cleanParams} from '../helpers/clean-params';
@@ -12,10 +12,16 @@ const useGames = (query?: Partial<GameContext>) => {
   const gameQuery = query ? toGameQuery(query) : undefined;
   const cleaned = gameQuery ? cleanParams(gameQuery) : undefined;
 
-  return useQuery<FetchDataResponse<Game>, Error>({
+  return useInfiniteQuery<FetchDataResponse<Game>, Error>({
     queryKey: ['games', cleaned],
-    queryFn: () => apiCLient.getAll({params: cleaned}),
+    queryFn: ({pageParam = 1}) => {
+      cleaned ? (cleaned.page = pageParam) : null;
+      return apiCLient.getAll({params: cleaned});
+    },
     staleTime: 24 * 60 * 60 * 1000, // 24hrs
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.next ? allPages.length + 1 : undefined;
+    },
   });
 };
 

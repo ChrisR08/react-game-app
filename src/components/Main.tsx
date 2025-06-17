@@ -2,6 +2,7 @@ import {Heading} from '@chakra-ui/react';
 import GameGrid from './GameGrid';
 import useGameQuery from '@/hooks/useGameQuery';
 import FiltersBar from './FiltersBar';
+import BackToTop from './BackToTop';
 
 const Main = () => {
   const {gameQuery} = useGameQuery();
@@ -17,6 +18,7 @@ const Main = () => {
       </Heading>
       <FiltersBar />
       <GameGrid />
+      <BackToTop />
     </main>
   );
 };

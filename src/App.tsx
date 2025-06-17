@@ -3,7 +3,7 @@ import {Grid, GridItem} from '@chakra-ui/react';
 import GenreList from './components/GenreList';
 import Main from './components/Main';
 import Header from './components/Header';
-import {COL_1_WIDTH, GAP} from './styles/constants';
+import {COL_1_WIDTH, GAP, PADDING} from './styles/constants';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         lg: `${COL_1_WIDTH} 1fr`,
       }}
       gap={GAP}
-      padding={{base: 3, sm: 4, md: 8, lg: 10}}
+      padding={PADDING}
     >
       <GridItem area='header'>
         <Header />
