@@ -1,20 +1,16 @@
 import useDebounce from '@/hooks/useDebounce';
-import useGameQuery from '@/hooks/useGameQuery';
+import useGameQueryStore from '@/stores/GameQueryStore';
 import {Input, InputGroup, InputLeftElement} from '@chakra-ui/react';
 import {useEffect, useState} from 'react';
 import {BsSearch} from 'react-icons/bs';
 
 const SearchInput = () => {
-  const {setGameQuery} = useGameQuery();
+  const setSearchValue = useGameQueryStore((s) => s.setSearchValue);
   const [searchTerm, setSearchTerm] = useState('');
-
-  const debouncedSearchTerm = useDebounce(searchTerm, 750);
+  const debouncedSearchTerm = useDebounce(searchTerm);
 
   useEffect(() => {
-    setGameQuery((prev) => ({
-      ...prev,
-      search: debouncedSearchTerm.trim() || '',
-    }));
+    setSearchValue(debouncedSearchTerm.trim() || '');
   }, [debouncedSearchTerm]);
 
   return (

@@ -1,12 +1,12 @@
-import useGameQuery from '@/hooks/useGameQuery';
+import useGameQueryStore from '@/stores/GameQueryStore';
 import {Button, Icon} from '@chakra-ui/react';
 import {RxReset} from 'react-icons/rx';
 
 const ResetFilters = () => {
-  const {setGameQuery} = useGameQuery();
+  const resetQuery = useGameQueryStore((s) => s.resetQuery);
 
   return (
-    <Button gap={1.5} onClick={() => setGameQuery({})}>
+    <Button gap={1.5} aria-label='Reset filters' onClick={resetQuery}>
       <span className='hide-sm'>Reset</span>
       <Icon as={RxReset} />
     </Button>
