@@ -11,23 +11,19 @@ import {
 
 import useGenres from '../hooks/useGenres';
 import getCroppedImageUrl from '../helpers/get-cropped-image';
-import useGameQuery from '@/hooks/useGameQuery';
-import {Genre} from '@/models/genre';
+import useGameQueryStore from '@/stores/GameQueryStore';
+import {shallow} from 'zustand/shallow';
 
 const GenreList = () => {
   const {data, isLoading, error} = useGenres();
-  const {
-    gameQuery: {genre: selectedGenre},
-    setGameQuery,
-  } = useGameQuery();
+  const {gameQuery, setGenreId} = useGameQueryStore(
+    (s) => ({gameQuery: s.gameQuery, setGenreId: s.setGenreId}),
+    shallow
+  );
 
   if (isLoading) return <Spinner />;
 
   if (error) return <Text>{error.message}</Text>;
-
-  const handleSelectGenre = (genre: Genre) => {
-    setGameQuery((prev) => ({...prev, genre}));
-  };
 
   return (
     <Box display='flex' flexDirection='column' gap={4}>
@@ -42,10 +38,10 @@ const GenreList = () => {
               paddingInlineStart='0'
               whiteSpace='normal'
               textAlign='left'
-              fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
+              fontWeight={genre.id === gameQuery.genres ? 'bold' : 'normal'}
               gap={2.5}
               variant='ghost'
-              onClick={() => handleSelectGenre(genre)}
+              onClick={() => setGenreId(genre.id)}
             >
               <Image
                 boxSize='32px'

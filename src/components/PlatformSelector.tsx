@@ -9,50 +9,44 @@ import {
 } from '@chakra-ui/react';
 import {BsChevronDown} from 'react-icons/bs';
 import iconMap from '@/helpers/iconMap';
-import useGameQuery from '@/hooks/useGameQuery';
-import Platform from '@/models/platform';
+import useGameQueryStore from '@/stores/GameQueryStore';
+import {shallow} from 'zustand/shallow';
+import getPlatformName from '@/helpers/get-platform-name';
 
 const PlatformSelector = () => {
-  const {
-    gameQuery: {platform},
-    setGameQuery,
-  } = useGameQuery();
+  const {gameQuery, resetPlatform, setPlatformId} = useGameQueryStore(
+    (s) => ({
+      gameQuery: s.gameQuery,
+      resetPlatform: s.resetPlatform,
+      setPlatformId: s.setPlatformId,
+    }),
+    shallow
+  );
   const {data, error} = usePlatforms();
-
-  const handleSelectPlatform = (platform: Platform) => {
-    setGameQuery((prev) => ({...prev, platform}));
-  };
-
-  const handleResetPlatform = () => {
-    setGameQuery((prev) => {
-      const {platform, ...rest} = prev;
-      return rest;
-    });
-  };
 
   if (error) return null;
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        {platform ? (
+        {gameQuery.parent_platforms ? (
           <div className='wrapper wrapper-x wrapper-x-s'>
-            <Icon as={iconMap[platform.slug]} color='gray.400' />{' '}
-            {platform?.name}
+            <Icon as={iconMap[gameQuery.parent_platforms]} color='gray.400' />{' '}
+            {getPlatformName(gameQuery)}
           </div>
         ) : (
-          'Platforms'
+          'All Platforms'
         )}
       </MenuButton>
       <MenuList>
-        <MenuItem onClick={handleResetPlatform}>All Platforms</MenuItem>
+        <MenuItem onClick={() => resetPlatform()}>All Platforms</MenuItem>
         {data?.results.map((platform) => (
           <MenuItem
             key={platform.id}
             gap={1.5}
-            onClick={() => handleSelectPlatform(platform)}
+            onClick={() => setPlatformId(platform.id)}
           >
-            <Icon as={iconMap[platform.slug]} color='gray.400' />
+            <Icon as={iconMap[platform.id]} color='gray.400' />
             {platform.name}
           </MenuItem>
         ))}

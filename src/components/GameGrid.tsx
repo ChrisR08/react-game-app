@@ -6,11 +6,11 @@ import GameCardSkeleton from './GameCardSkeleton';
 import GameCard from './GameCard';
 import useGames from '@/hooks/useGames';
 import {range} from '@/helpers/range';
-import useGameQuery from '@/hooks/useGameQuery';
 import {GAP} from '@/styles/constants';
+import useGameQueryStore from '@/stores/GameQueryStore';
 
 const GameGrid = () => {
-  const {gameQuery} = useGameQuery();
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
   const {data, error, isLoading, fetchNextPage, hasNextPage} =
     useGames(gameQuery);
 
@@ -25,7 +25,7 @@ const GameGrid = () => {
     <Box width='100%'>
       <InfiniteScroll
         dataLength={fetchedGamesCount}
-        next={() => fetchNextPage()}
+        next={fetchNextPage}
         style={{
           width: '100%',
           display: 'flex',

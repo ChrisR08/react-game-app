@@ -1,14 +1,20 @@
 import {Heading} from '@chakra-ui/react';
 import GameGrid from './GameGrid';
-import useGameQuery from '@/hooks/useGameQuery';
 import FiltersBar from './FiltersBar';
 import BackToTop from './BackToTop';
+import useGameQueryStore from '@/stores/GameQueryStore';
+import genres from '@/data/genres';
+import getPlatformName from '@/helpers/get-platform-name';
 
 const Main = () => {
-  const {gameQuery} = useGameQuery();
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
 
-  const heading = `${gameQuery.platform?.name || ''} ${
-    gameQuery.genre?.name || ''
+  // Determine Genre name from the query id
+  const currentGenre = genres.filter((genre) => genre.id === gameQuery.genres);
+
+  // Creates dynamic heading stating the queried plartform and genre if truthy
+  let heading = `${getPlatformName(gameQuery) || ''} ${
+    currentGenre[0]?.name || ''
   } Games`;
 
   return (
