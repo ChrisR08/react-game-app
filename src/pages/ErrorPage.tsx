@@ -5,7 +5,6 @@ import {Box, Heading} from '@chakra-ui/react';
 
 const ErrorPage = () => {
   const error = useRouteError();
-  console.log(error);
 
   return (
     <Box className='wrapper' gap={GAP} padding={PADDING}>

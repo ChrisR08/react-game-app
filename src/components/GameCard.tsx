@@ -3,7 +3,9 @@ import PlatformIconList from './PlatformIconList';
 import CriticScore from './CriticScore';
 import getCroppedImageUrl from '../helpers/get-cropped-image';
 import GameCardContainer from './GameCardContainer';
-import {Game} from '@/hooks/useGames';
+import {Game} from '@/models/Game';
+import {scale} from 'framer-motion';
+import {Link} from 'react-router-dom';
 
 interface Props {
   game: Game;
@@ -13,6 +15,8 @@ const GameCard = ({game}: Props) => {
   const imageSrc = game.background_image
     ? getCroppedImageUrl(game.background_image)
     : '/no-image-placeholder-6f3882e0.webp';
+
+  const url = `/games/${game.slug}`;
 
   return (
     <GameCardContainer>
@@ -34,7 +38,9 @@ const GameCard = ({game}: Props) => {
               <CriticScore score={game.metacritic} />
             )}
           </HStack>
-          <Heading fontSize='xl'>{game.name}</Heading>
+          <Link to={url}>
+            <Heading fontSize='xl'>{game.name}</Heading>
+          </Link>
         </CardBody>
       </Card>
     </GameCardContainer>
