@@ -1,4 +1,5 @@
 import {Platform} from '@/models/Platform';
+import {Publisher} from './Publisher';
 
 export interface Game {
   id: number;
@@ -13,4 +14,5 @@ export interface Game {
   metacritic: number;
   playtime: number;
   description_raw: string;
+  publishers: Publisher[];
 }
