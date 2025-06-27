@@ -1,12 +1,12 @@
-# 🎮 React Game Explorer
+# React Game Explorer
 
 A modern React app for discovering and filtering video games using the [RAWG Video Games Database API](https://rawg.io/apidocs). Built with TypeScript, React Query, Zustand, Chakra UI, and Vite.
 
-> 🌐 Live site: [https://react-game-app-chrisr08.vercel.app](https://react-game-app-chrisr08.vercel.app)
+> Live site: [https://react-game-app-chrisr08.vercel.app](https://react-game-app-chrisr08.vercel.app)
 
 ---
 
-## ✨ Features
+## Features
 
 - Browse games by genre, platform, and rating
 - Search by title
@@ -18,7 +18,7 @@ A modern React app for discovering and filtering video games using the [RAWG Vid
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 - **React + TypeScript**
 - **Vite** – lightning-fast dev environment
@@ -29,7 +29,7 @@ A modern React app for discovering and filtering video games using the [RAWG Vid
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone and install
 
@@ -57,14 +57,14 @@ npm run dev
 
 ---
 
-## 🌐 Deployment
+## Deployment
 
 This app is deployed via [Vercel](https://vercel.com).
 Add your environment variables via Vercel's dashboard under **Project Settings → Environment Variables**.
 
 ---
 
-## 🧠 Future Plans
+## Future Plans
 
 - Build a backend and middleware
 - Game details page 
@@ -74,13 +74,13 @@ Add your environment variables via Vercel's dashboard under **Project Settings �
 
 ---
 
-## 🙋 Author
+## Author
 
 Made by [Chris Roberts](https://github.com/ChrisR08)
 Built as a personal learning project to deepen knowledge of modern React architecture.
 
 ---
 
-## 📄 License
+## License
 
 This project is open source under the [MIT License](LICENSE).
