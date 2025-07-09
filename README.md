@@ -66,10 +66,9 @@ Add your environment variables via Vercel's dashboard under **Project Settings â
 
 ## Future Plans
 
-- Build a backend and middleware
-- Game details page 
 - Unit and integration tests 
-- Performance improvements
+- Build a backend and middleware
+- Performance improvements, if needed
 - Polish and accessibility tweaks
 
 ---
