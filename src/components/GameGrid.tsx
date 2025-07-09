@@ -21,6 +21,8 @@ const GameGrid = () => {
   const fetchedGamesCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
 
+  console.log({isLoading, data});
+
   return (
     <Box width='100%'>
       <InfiniteScroll
@@ -43,7 +45,7 @@ const GameGrid = () => {
         >
           {isLoading &&
             range(9).map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-          {!isLoading && data?.pages.length === 0 && (
+          {!isLoading && data?.pages[0].count === 0 && (
             <Text>
               Sorry, no games were found matching your search/filters.
             </Text>
