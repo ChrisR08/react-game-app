@@ -1,6 +1,7 @@
 import {create} from 'zustand';
 
 export interface GameQuery {
+  id?: string;
   search?: string;
   genres?: number;
   parent_platforms?: number;

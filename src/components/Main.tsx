@@ -19,7 +19,7 @@ const Main = () => {
 
   return (
     <main className='wrapper'>
-      <Heading as='h1' fontSize='5xl'>
+      <Heading as='h1' fontSize={{base: '3xl', md: '4xl', lg: '5xl'}}>
         {heading}
       </Heading>
       <FiltersBar />

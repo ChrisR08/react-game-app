@@ -43,7 +43,7 @@ const GameGrid = () => {
         >
           {isLoading &&
             range(9).map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-          {!isLoading && data?.pages.length === 0 && (
+          {!isLoading && data?.pages[0].count === 0 && (
             <Text>
               Sorry, no games were found matching your search/filters.
             </Text>

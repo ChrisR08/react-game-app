@@ -7,7 +7,7 @@ const ResetFilters = () => {
 
   return (
     <Button gap={1.5} aria-label='Reset filters' onClick={resetQuery}>
-      <span className='hide-sm'>Reset</span>
+      Reset
       <Icon as={RxReset} />
     </Button>
   );

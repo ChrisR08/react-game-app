@@ -3,8 +3,10 @@ import useGameQueryStore from '@/stores/GameQueryStore';
 import {Input, InputGroup, InputLeftElement} from '@chakra-ui/react';
 import {useEffect, useState} from 'react';
 import {BsSearch} from 'react-icons/bs';
+import {useNavigate} from 'react-router-dom';
 
 const SearchInput = () => {
+  const navigate = useNavigate();
   const setSearchValue = useGameQueryStore((s) => s.setSearchValue);
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm);
@@ -21,7 +23,10 @@ const SearchInput = () => {
         placeholder='Search games'
         variant='filled'
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+          navigate('/');
+        }}
       />
     </InputGroup>
   );
