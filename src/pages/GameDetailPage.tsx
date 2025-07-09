@@ -17,7 +17,9 @@ const GameDetailPage = () => {
   return (
     <SimpleGrid minWidth='100%' columns={{base: 1, lg: 2}} gap={GAP}>
       <Box display='flex' flexDirection='column' gap={GAP}>
-        <Heading as='h1'>{game.name}</Heading>
+        <Heading as='h1' fontSize={{base: '3xl', md: '4xl', lg: '5xl'}}>
+          {game.name}
+        </Heading>
         <ReadMore excerptLength={350}>{game.description_raw}</ReadMore>
         <GameAttributes game={game} />
       </Box>

@@ -1,7 +1,7 @@
-import {Platform} from '@/models/Platform';
-import {Publisher} from './Publisher';
+import Platform from '@/models/Platform';
+import Publisher from './Publisher';
 
-export interface Game {
+export default interface Game {
   id: number;
   name: string;
   slug: string;

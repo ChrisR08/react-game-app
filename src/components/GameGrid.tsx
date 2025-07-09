@@ -21,8 +21,6 @@ const GameGrid = () => {
   const fetchedGamesCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
 
-  console.log({isLoading, data});
-
   return (
     <Box width='100%'>
       <InfiniteScroll

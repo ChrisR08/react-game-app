@@ -1,4 +1,4 @@
-import {Game} from '@/models/Game';
+import Game from '@/models/Game';
 import {SimpleGrid, ListItem} from '@chakra-ui/react';
 import CriticScore from './CriticScore';
 import UnorderedList from './UnorderedList';

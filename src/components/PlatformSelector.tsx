@@ -35,7 +35,7 @@ const PlatformSelector = () => {
             {getPlatformName(gameQuery)}
           </div>
         ) : (
-          'All Platforms'
+          'Platforms'
         )}
       </MenuButton>
       <MenuList>

@@ -140,9 +140,43 @@ html[data-theme='dark'] .btt-btn:hover {
   background-color: rgba(255, 255, 255, 0.16) !important;
 }
 
+/* Game card */
+.game-card-container {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.game-card-container:hover {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.016);
+}
+
+.game-card-container:hover .game-card__img {
+  transform: scale(1.02);
+}
+
+.game-card-container:hover .game-card__h2 {
+  color: #90cdf4;
+}
+
+.game-card * {
+  transition: 0.25s ease-in-out;
+}
+
+.game-card__h2::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 /* Responsive */
 @media screen and (max-width: 480px) {
   .hide-sm {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .hide-lg {
     display: none;
   }
 }

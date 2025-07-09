@@ -16,7 +16,7 @@ const ColorModeSwitch = () => {
       width='100%'
       maxWidth='fit-content'
       alignItems='center'
-      gap='8px'
+      gap={1}
     >
       <Switch
         id='toggle-theme'

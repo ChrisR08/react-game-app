@@ -2,7 +2,7 @@ import platforms from '@/data/platforms';
 
 import APIClient, {FetchDataResponse} from '@/services/api-client';
 import {useQuery} from '@tanstack/react-query';
-import {Platform} from '../models/Platform';
+import Platform from '../models/Platform';
 
 const apiClient = new APIClient<Platform>('/platforms/lists/parents');
 const usePlatforms = () =>
