@@ -28,7 +28,6 @@ const GenreSelector = () => {
   const genres = data?.results;
 
   const selectedGenre = genres.find((genre) => genre.id === gameQuery.genres);
-  console.log(selectedGenre);
 
   return (
     <Menu>
