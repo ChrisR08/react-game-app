@@ -4,6 +4,7 @@ import {Heading, Spinner} from '@chakra-ui/react';
 import {useParams} from 'react-router-dom';
 import GameAttributes from '@/components/GameAttributes';
 import GameTrailer from '@/components/GameTrailer';
+import GameScreenshots from '@/components/GameScreenshots';
 
 const GameDetailPage = () => {
   const {slug} = useParams();
@@ -18,6 +19,7 @@ const GameDetailPage = () => {
       <ReadMore excerptLength={350}>{game.description_raw}</ReadMore>
       <GameAttributes game={game} />
       <GameTrailer gameId={game.id} />
+      <GameScreenshots gameId={game.id} />
     </>
   );
 };
