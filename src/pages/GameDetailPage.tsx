@@ -1,8 +1,9 @@
 import ReadMore from '@/components/ReadMore';
 import useGameDetails from '@/hooks/useGameDetails';
-import {Heading, Spinner, Text} from '@chakra-ui/react';
+import {Heading, Spinner} from '@chakra-ui/react';
 import {useParams} from 'react-router-dom';
 import GameAttributes from '@/components/GameAttributes';
+import GameTrailer from '@/components/GameTrailer';
 
 const GameDetailPage = () => {
   const {slug} = useParams();
@@ -14,18 +15,9 @@ const GameDetailPage = () => {
   return (
     <>
       <Heading as='h1'>{game.name}</Heading>
-      <Text>{game.description_raw}</Text>
-      <ReadMore excerptLength={250}>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi dolorum
-        dolorem possimus ut voluptates repudiandae voluptate doloribus
-        accusantium, quam minus nobis suscipit maiores nesciunt laudantium
-        temporibus debitis sit deserunt commodi. Lorem ipsum dolor sit amet,
-        consectetur adipisicing elit. Nisi dolorum dolorem possimus ut
-        voluptates repudiandae voluptate doloribus accusantium, quam minus nobis
-        suscipit maiores nesciunt laudantium temporibus debitis sit deserunt
-        commodi.
-      </ReadMore>
+      <ReadMore excerptLength={350}>{game.description_raw}</ReadMore>
       <GameAttributes game={game} />
+      <GameTrailer gameId={game.id} />
     </>
   );
 };
