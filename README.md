@@ -12,7 +12,7 @@ A modern React app for discovering and filtering video games using the [RAWG Vid
 - Search by title
 - Responsive layout with Chakra UI
 - Fast and efficient with Vite and React Query
-- ☁️ Hosted on Vercel
+- Hosted on Vercel
 - State management with Zustand
 - Clean, modular code structure
 
