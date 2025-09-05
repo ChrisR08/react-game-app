@@ -2,7 +2,7 @@
 
 A modern React app for discovering and filtering video games using the [RAWG Video Games Database API](https://rawg.io/apidocs). Built with TypeScript, React Query, Zustand, Chakra UI, and Vite.
 
-> Live site: [https://react-game-app-chrisr08.vercel.app](https://react-game-app-chrisr08.vercel.app)
+> Live site: [https://react-game-app-delta.vercel.app/](https://react-game-app-delta.vercel.app/)
 
 ---
 
